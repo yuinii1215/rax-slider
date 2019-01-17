@@ -39,6 +39,7 @@
     "rax": "0.x"
   },
   "devDependencies": {
+    "rax-image": "^0.6.5",
     "@babel/core": "7.2.0",
     "@babel/plugin-proposal-class-properties": "7.2.0",
     "@babel/plugin-proposal-decorators": "7.2.0",

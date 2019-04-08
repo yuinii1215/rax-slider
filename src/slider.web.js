@@ -1,23 +1,11 @@
 /** @jsx createElement */
 
-import {createElement, useRef, Fragment, useState} from 'rax';
+import {createElement, useEffect, useRef, Fragment, useState, useReducer} from 'rax';
 import Pagination from './web/Pagination';
 import Pages from './web/Pages';
 import styles from './style';
 import SwipeView from './web/SwipeView';
-
-/**
- * 样式只能用对象
- * width、height 只能用数值
- * useState 懒加载
- * useEffect
- * 动画数值转换
- * transform 设置的宽度值
- * useRef 只能在 dom 节点上（替代 findDOMNode），组件上使用 forwardRef
- * useReducer
- * cloneElement
- * Fragment
- */
+import swipeReducer from './web/swipeReducer';
 
 export default (props) => {
   const {
@@ -25,14 +13,14 @@ export default (props) => {
     children,
     showsPagination = true,
     index = 0,
-    paginationStyle = null
+    paginationStyle = null,
+    autoplayInterval = 3000,
+    autoPlay = false,
+    loop = false,
   } = props;
-  // 换算真实比例的值
   let width = style.width;
   const height = style.height;
   const total = children.length;
-
-  let [currentIndex, setCurrentIndex] = useState(index);
 
   let childrenRefs = [];
   for (let i = 0; i < total; i++) {
@@ -44,12 +32,32 @@ export default (props) => {
     setCurrentIndex(event.index);
   };
 
+  let swipeViewRef = useRef(null);
+  let [currentIndex, setCurrentIndex] = useState(index);
+  const [state, dispatch] = useReducer(swipeReducer,
+    {loop, total, style, swipeViewRef, childrenRefs, onChange, currentIndex: index, offsetX: 0});
+
+  useEffect(() => {
+    let autoPlayTimer = null;
+    if (autoPlay && total > 1) {
+      autoPlayTimer = setInterval(() => {
+        dispatch({type: 'LOOP_PLAY', event: {
+          direction: 'SWIPE_LEFT'
+        }});
+      }, parseFloat(autoplayInterval));
+    };
+    return () => {
+      autoPlayTimer && clearInterval(autoPlayTimer);
+    };
+  }, [currentIndex]);
+
   return (
     <Fragment>
-      {<SwipeView
-        {...props}
+      {<SwipeView {...props}
         styles={styles}
         total={total}
+        dispatch={dispatch}
+        swipeViewRef={swipeViewRef}
         onChange={onChange}
         childrenRefs={childrenRefs}>
         <Pages

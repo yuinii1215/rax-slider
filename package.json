@@ -1,6 +1,6 @@
 {
   "name": "rax-slider",
-  "version": "1.0.0",
+  "version": "1.0.0-beta.0",
   "description": "Slider component for Rax.",
   "license": "BSD-3-Clause",
   "main": "lib/index.js",
@@ -32,16 +32,17 @@
     "npm": ">=3.0.0"
   },
   "dependencies": {
-    "rax-view": "^1.0.0",
-    "universal-env": "^1.0.0",
+    "rax-view": "1.0.0-beta.0",
+    "universal-env": "^0.6.6",
     "universal-panresponder": "^0.6.5",
     "rax-clone-element": "^1.0.0"
   },
   "peerDependencies": {
-    "rax": "0.x"
+    "rax": "^1.0.0"
   },
   "devDependencies": {
-    "rax-image": "^0.6.5",
+    "rax": "^1.0.0",
+    "rax-image": "1.0.0-beta.1",
     "@babel/core": "7.2.0",
     "@babel/plugin-proposal-class-properties": "7.2.0",
     "@babel/plugin-proposal-decorators": "7.2.0",

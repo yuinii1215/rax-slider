@@ -2,7 +2,7 @@ import {createElement} from 'rax';
 import View from 'rax-view';
 import Image from 'rax-image';
 import renderer from 'rax-test-renderer';
-import Slider from '../';
+import Slider from '../slider.weex';
 
 jest.mock('universal-env', () => {
   return {
@@ -10,10 +10,19 @@ jest.mock('universal-env', () => {
   };
 });
 
+jest.mock('rax-image', () => {
+  return function() {
+    return <img src="" alt="" />;
+  }
+});
+
 describe('Slider in weex', () => {
   it('should render a slider', () => {
     const component = renderer.create(
       <Slider>Example</Slider>
+    );
+    const dd = renderer.create(
+      <div>Example</div>
     );
     let tree = component.toJSON();
     expect(tree.tagName).toEqual('SLIDER');

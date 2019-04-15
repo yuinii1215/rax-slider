@@ -8,3 +8,4 @@ if (isWeex) {
 }
 
 export default Slider;
+module.exports = exports.default;

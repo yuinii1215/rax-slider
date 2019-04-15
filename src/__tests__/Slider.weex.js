@@ -13,7 +13,7 @@ jest.mock('universal-env', () => {
 jest.mock('rax-image', () => {
   return function() {
     return <img src="" alt="" />;
-  }
+  };
 });
 
 describe('Slider in weex', () => {

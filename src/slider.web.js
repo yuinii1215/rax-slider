@@ -27,13 +27,13 @@ export default (props) => {
     childrenRefs.push(useRef(null));
   }
 
+  let [currentIndex, setCurrentIndex] = useState(index);
   let onChange = (event) => {
     props.onChange && props.onChange(event);
     setCurrentIndex(event.index);
   };
 
   let swipeViewRef = useRef(null);
-  let [currentIndex, setCurrentIndex] = useState(index);
   const [state, dispatch] = useReducer(swipeReducer,
     {loop, total, style, swipeViewRef, childrenRefs, onChange, currentIndex: index, offsetX: 0});
 

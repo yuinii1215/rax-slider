@@ -1,3 +1,7 @@
+let loopedIndex = (index, total) => {
+  return Math.abs(index) % total;
+};
+
 let isLoopEnd = (index, direction, isLoop, total) => {
   const realIndex = loopedIndex(index, total);
   if (!isLoop && (realIndex === total - 1 && direction === 'SWIPE_LEFT' ||
@@ -5,10 +9,6 @@ let isLoopEnd = (index, direction, isLoop, total) => {
     return true;
   }
   return false;
-};
-
-let loopedIndex = (index, total) => {
-  return Math.abs(index) % total;
 };
 
 let slideTo = (index, direction, isSwiping, style, swipeViewRef, childrenRefs, onChange, total) => {

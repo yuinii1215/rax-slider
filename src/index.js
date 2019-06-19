@@ -1,11 +1,12 @@
 import {isWeex} from 'universal-env';
+import SliderWeb from './slider.web';
+import SliderWeex from './slider.weex';
 
 let Slider = null;
 if (isWeex) {
-  Slider = require('./slider.weex');
+  Slider = SliderWeex;
 } else {
-  Slider = require('./slider.web');
+  Slider = SliderWeb;
 }
 
 export default Slider;
-module.exports = exports.default;

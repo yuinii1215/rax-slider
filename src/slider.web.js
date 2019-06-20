@@ -184,11 +184,13 @@ class Slider extends Component {
 
     return children.map((child, index) => {
       let ref = createRef();
+
       let translateStyle = {
         width: this.width + 'px',
         height: this.height,
         left: index * this.width + 'px'
       };
+
       if (!(this.childRefs[index] && this.childRefs[index].current)) {
         this.childRefs.push(ref);
       } else {
@@ -211,9 +213,10 @@ class Slider extends Component {
       horizontalThreshold,
       children
     } = this.props;
+
     const style = {
       width: this.width + 'px',
-      height: this.height
+      height: parseInt(this.height, 10)
     };
 
     return children.length && children.length > 1 ?

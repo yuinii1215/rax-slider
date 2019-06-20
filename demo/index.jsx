@@ -1,10 +1,8 @@
-import {Component, createElement, render } from 'rax';
+import { createElement, Component, render } from 'rax';
 import View from 'rax-view';
 import Image from 'rax-image';
 import Slider from '../src/index';
-import * as DriverDOM from 'driver-dom';
-import * as DriverWeex from 'driver-weex';
-import { isWeex } from 'universal-env';
+import DU from 'driver-universal';
 
 let styles = {
   slider: {
@@ -50,25 +48,27 @@ class App extends Component {
 
   render() {
     return (
-      <Slider className="slider" width="750rem" height="500rem" style={styles.slider}
-        autoPlay={true}
-        loop={true}
-        showsPagination={true}
-        paginationStyle={styles.paginationStyle}
-        autoplayTimeout={3000}
-        onChange={this.onchange}>
-        <View style={styles.itemWrap}>
-          <Image style={styles.image} source={{uri: '//gw.alicdn.com/tfs/TB19NbqKFXXXXXLXVXXXXXXXXXX-750-500.png'}} />
-        </View>
-        <View style={styles.itemWrap}>
-          <Image style={styles.image} source={{uri: '//gw.alicdn.com/tfs/TB1tWYBKFXXXXatXpXXXXXXXXXX-750-500.png'}} />
-        </View>
-        <View style={styles.itemWrap}>
-          <Image style={styles.image} source={{uri: '//gw.alicdn.com/tfs/TB1SX_vKFXXXXbyXFXXXXXXXXXX-750-500.png'}} />
-        </View>
-      </Slider>
+      <View>
+        <Slider className="slider" width="750" height="500" style={styles.slider}
+                autoPlay={true}
+                loop={true}
+                showsPagination={true}
+                paginationStyle={styles.paginationStyle}
+                autoplayTimeout={3000}
+                onChange={this.onchange}>
+          <View style={styles.itemWrap}>
+            <Image style={styles.image} source={{height: 500, width: 375, uri: '//gw.alicdn.com/tfs/TB19NbqKFXXXXXLXVXXXXXXXXXX-750-500.png'}} />
+          </View>
+          <View style={styles.itemWrap}>
+            <Image style={styles.image} source={{height: 500, width: 375, uri: '//gw.alicdn.com/tfs/TB1tWYBKFXXXXatXpXXXXXXXXXX-750-500.png'}} />
+          </View>
+          <View style={styles.itemWrap}>
+            <Image style={styles.image} source={{height: 500, width: 375, uri: '//gw.alicdn.com/tfs/TB1SX_vKFXXXXbyXFXXXXXXXXXX-750-500.png'}} />
+          </View>
+        </Slider>
+      </View>
     );
   }
 }
 
-render(<App />, document.body, { driver: isWeex ? DriverWeex : DriverDOM });
+render(<App />, document.body, { driver: DU });

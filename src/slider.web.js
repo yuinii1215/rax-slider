@@ -1,4 +1,4 @@
-import {createElement, Component, createRef} from 'rax';
+import { createElement, Component, createRef } from 'rax';
 import cloneElement from 'rax-clone-element';
 import findDOMNode from 'rax-find-dom-node';
 import PropTypes from 'prop-types';
@@ -189,7 +189,11 @@ class Slider extends Component {
         height: this.height,
         left: index * this.width + 'px'
       };
-      this.childRefs.push(ref)
+      if (!(this.childRefs[index] && this.childRefs[index].current)) {
+        this.childRefs.push(ref);
+      } else {
+        this.childRefs[index] = ref;
+      }
       return (
         <View ref={ref} className={'childWrap' + index}
               style={{...styles.childrenStyle, ...translateStyle}} key={index}>
@@ -242,7 +246,7 @@ class Slider extends Component {
       </View>
     );
   }
-};
+}
 
 Slider.defaultProps = {
   horizontal: true,

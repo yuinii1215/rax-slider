@@ -69,7 +69,7 @@ class Slider extends Component {
         index: index
       });
     } else {
-      this.sliderView.slideTo(index);
+      this.sliderView.current.slideTo(index);
     }
   }
 

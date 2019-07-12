@@ -1,4 +1,4 @@
-import { createElement, Component, render } from 'rax';
+import { createElement, Component, render, createRef } from 'rax';
 import View from 'rax-view';
 import Image from 'rax-image';
 import Slider from '../src/index';
@@ -38,12 +38,19 @@ let styles = {
 };
 
 class App extends Component {
+
   constructor(props) {
     super(props);
+
+    this.inputRef = createRef();
   }
 
   onchange = (index) => {
     console.log('change', index);
+  }
+
+  onClick = () => {
+    this.inputRef.current.slideTo(0);
   }
 
   render() {
@@ -55,7 +62,8 @@ class App extends Component {
                 showsPagination={true}
                 paginationStyle={styles.paginationStyle}
                 autoplayTimeout={3000}
-                onChange={this.onchange}>
+                onChange={this.onchange}
+                ref={this.inputRef}>
           <View style={styles.itemWrap}>
             <Image style={styles.image} source={{height: 500, width: 375, uri: '//gw.alicdn.com/tfs/TB19NbqKFXXXXXLXVXXXXXXXXXX-750-500.png'}} />
           </View>
@@ -66,6 +74,8 @@ class App extends Component {
             <Image style={styles.image} source={{height: 500, width: 375, uri: '//gw.alicdn.com/tfs/TB1SX_vKFXXXXbyXFXXXXXXXXXX-750-500.png'}} />
           </View>
         </Slider>
+
+        <View onClick={this.onClick}>Click</View>
       </View>
     );
   }

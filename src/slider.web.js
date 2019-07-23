@@ -240,10 +240,10 @@ class Slider extends Component {
   }
 
   render() {
-    const {style, showsPagination, children} = this.props;
+    const {style, showsPagination, children,className} = this.props;
     this.total = children.length;
     return (
-      <View style={{...styles.slideWrapper, ...style}}>
+      <View style={{...styles.slideWrapper, ...style}} className={className ||  ""}>
         {this.renderSwipeView(this.getPages())}
         {showsPagination ? this.renderPagination() : ''}
       </View>

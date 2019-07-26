@@ -3,6 +3,7 @@ import View from 'rax-view';
 import Image from 'rax-image';
 import Slider from '../src/index';
 import DU from 'driver-universal';
+import "./index.css"
 
 let styles = {
   slider: {

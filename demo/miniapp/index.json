@@ -1,0 +1,7 @@
+{
+  "defaultTitle": "小程序Rax Swiper 组件",
+  "usingComponents": {
+    "rax-swiper": "../../src/miniapp/index",
+    "rax-view": "./rax-view/index"
+  }
+}

@@ -1,6 +1,6 @@
 {
   "name": "rax-slider",
-  "version": "1.0.1-beta.2",
+  "version": "1.0.2-beta",
   "description": "Slider component for Rax.",
   "license": "BSD-3-Clause",
   "main": "lib/index.js",
@@ -10,7 +10,8 @@
     "start": "rax-scripts start --type 'component' -p 8000",
     "prepublishOnly": "npm run build",
     "test": "npm run build && rax-scripts test",
-    "lint": "eslint --ext .js --ext .jsx --ext .ts --ext .tsx ./src"
+    "lint": "eslint --ext .js --ext .jsx --ext .ts --ext .tsx ./src",
+    "miniapp": "rax-scripts start --type 'component-miniapp'"
   },
   "files": [
     "dist",
@@ -38,7 +39,7 @@
     "rax-clone-element": "^1.0.0",
     "rax-find-dom-node": "^1.0.0",
     "rax-view": "^1.0.1-beta.7",
-    "universal-env": "^0.6.6",
+    "universal-env": "^1.0.0",
     "universal-panresponder": "^0.6.5"
   },
   "peerDependencies": {
@@ -63,6 +64,15 @@
     "rax-test-renderer": "^1.0.0"
   },
   "miniappConfig": {
-    "main": "lib/miniapp/index"
+    "main": "lib/miniapp/index",
+    "tagNameMap": "swiper",
+    "subComponents": {
+      "View": {
+        "tagNameMap": "swiper-item"
+      }
+    },
+    "propsMap": {
+      "onEndReachedThreshold": "endReachedThreshold"
+    }
   }
 }

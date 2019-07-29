@@ -1,6 +1,6 @@
 {
   "name": "rax-slider",
-  "version": "1.0.2-beta",
+  "version": "1.0.2",
   "description": "Slider component for Rax.",
   "license": "BSD-3-Clause",
   "main": "lib/index.js",
@@ -10,7 +10,7 @@
     "start": "rax-scripts start --type 'component' -p 8000",
     "prepublishOnly": "npm run build",
     "test": "npm run build && rax-scripts test",
-    "lint": "eslint --ext .js --ext .jsx --ext .ts --ext .tsx ./src",
+    "lint": "eslint --ext .js --ext .jsx --ext .ts --ext .tsx ./src --fix",
     "miniapp": "rax-scripts start --type 'component-miniapp'"
   },
   "files": [

@@ -10,10 +10,9 @@ if (isWeb) {
 }
 
 class Slider extends Component {
-
   constructor(props) {
     super(props);
-    this.sliderView = createRef()
+    this.sliderView = createRef();
   }
 
   state = {

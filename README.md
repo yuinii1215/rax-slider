@@ -1,6 +1,6 @@
 [![npm](https://img.shields.io/npm/v/universal-toast.svg)](https://www.npmjs.com/package/universal-toast)
 
-## [支持]
+## 支持
 Web / Weex / 小程序
 
 **描述：**
@@ -30,7 +30,8 @@ $ npm install rax-slider --save
   itemSize: '8rem'
 }
 ```
-| **属性**    | **类型**   | **默认值** | ** [必填] ** | **描述**           | ** [支持] ** |
+
+| **属性**    | **类型**   | **默认值** | **必填** | **描述**           | **支持** |
 | ----------- | ---------- | ---------- | ------------ | ------------------ | ------------ |
 | width     | `String` | -          | 是              | Slider的宽度 | <img alt="browser" src="https://gw.alicdn.com/tfs/TB1uYFobGSs3KVjSZPiXXcsiVXa-200-200.svg" width="25px" height="25px" /> <img alt="weex" src="https://gw.alicdn.com/tfs/TB1jM0ebMaH3KVjSZFjXXcFWpXa-200-200.svg" width="25px" height="25px" /> <img alt="miniApp" src="https://gw.alicdn.com/tfs/TB1bBpmbRCw3KVjSZFuXXcAOpXa-200-200.svg" width="25px" height="25px" />  |
 | height     | `String` | -          | 是              | Slider的高度 | <img alt="browser" src="https://gw.alicdn.com/tfs/TB1uYFobGSs3KVjSZPiXXcsiVXa-200-200.svg" width="25px" height="25px" /> <img alt="weex" src="https://gw.alicdn.com/tfs/TB1jM0ebMaH3KVjSZFjXXcFWpXa-200-200.svg" width="25px" height="25px" /> <img alt="miniApp" src="https://gw.alicdn.com/tfs/TB1bBpmbRCw3KVjSZFuXXcAOpXa-200-200.svg" width="25px" height="25px" />  |
@@ -47,7 +48,7 @@ $ npm install rax-slider --save
 ### `Slider.slideTo(index: number)`
 
 #### 参数
-| **属性** | **类型** | **默认值** | ** [必填] ** | **描述**            | 
+| **属性** | **类型** | **默认值** | **必填** | **描述**            | 
 | -------- | -------- | ---------- | ------------ | ------------------- |
 | index  | `number` | -          | 是           | 滚动到指定页面            | 
 

@@ -10,7 +10,6 @@ const SWIPE_LEFT = 'SWIPE_LEFT';
 const SWIPE_RIGHT = 'SWIPE_RIGHT';
 
 class Slider extends Component {
-
   constructor(props) {
     super(props);
     this.index = 0;
@@ -144,7 +143,7 @@ class Slider extends Component {
         width: itemSize,
         height: itemSize
       }
-  };
+    };
 
     const normalStyle = {
       ...styles.normalDot,
@@ -153,7 +152,7 @@ class Slider extends Component {
         width: itemSize,
         height: itemSize
       }
-  };
+    };
 
     let dots = [];
     const ActiveDot = this.props.activeDot || <View style={activeStyle} />;
@@ -198,7 +197,7 @@ class Slider extends Component {
       }
       return (
         <View ref={ref} className={'childWrap' + index}
-              style={{...styles.childrenStyle, ...translateStyle}} key={index}>
+          style={{...styles.childrenStyle, ...translateStyle}} key={index}>
           {child}
         </View>
       );
@@ -221,13 +220,13 @@ class Slider extends Component {
 
     return children.length && children.length > 1 ?
       <SwipeEvent style={{...styles.swipeWrapper, ...style}}
-                  onSwipeBegin={this.onSwipeBegin}
-                  onSwipeEnd={this.onSwipeEnd}
-                  onSwipe={this.onSwipe}
-                  initialVelocityThreshold={initialVelocityThreshold}
-                  verticalThreshold={verticalThreshold}
-                  vertical={vertical}
-                  horizontalThreshold={horizontalThreshold}>
+        onSwipeBegin={this.onSwipeBegin}
+        onSwipeEnd={this.onSwipeEnd}
+        onSwipe={this.onSwipe}
+        initialVelocityThreshold={initialVelocityThreshold}
+        verticalThreshold={verticalThreshold}
+        vertical={vertical}
+        horizontalThreshold={horizontalThreshold}>
         <View ref={this.swipeView} style={{...styles.swipeStyle, ...style}}>
           {pages}
         </View>
@@ -236,14 +235,14 @@ class Slider extends Component {
       <View ref={this.swipeView} style={{...styles.swipeStyle, ...style}}>
         {pages}
       </View>
-      ;
+    ;
   }
 
   render() {
-    const {style, showsPagination, children,className} = this.props;
+    const {style, showsPagination, children, className} = this.props;
     this.total = children.length;
     return (
-      <View style={{...styles.slideWrapper, ...style}} className={className ||  ""}>
+      <View style={{...styles.slideWrapper, ...style}} className={className || ''}>
         {this.renderSwipeView(this.getPages())}
         {showsPagination ? this.renderPagination() : ''}
       </View>

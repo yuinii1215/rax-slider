@@ -1,6 +1,5 @@
 import * as Rax from "rax";
 import {BaseProps} from "rax";
-import * as React from "react";
 
 /**
  * component:slider(轮播)
@@ -31,64 +30,64 @@ import * as React from "react";
 
 export interface SliderProps extends BaseProps {
 
-    /**
-     * slider width
-     * (Slider的宽度)
-     */
-    width: string;
+  /**
+   * slider width
+   * (Slider的宽度)
+   */
+  width: string;
 
-    /**
-     * slider height
-     * (Slider的高度)
-     */
-    height: string;
+  /**
+   * slider height
+   * (Slider的高度)
+   */
+  height: string;
 
-    /**
-     * slider is auto play
-     * (Slider是否自动播放)
-     * default(默认值): false
-     */
-    autoPlay?: boolean;
+  /**
+   * slider is auto play
+   * (Slider是否自动播放)
+   * default(默认值): false
+   */
+  autoPlay?: boolean;
 
-    /**
-     * Whether to display the small dots of paging
-     * (是否显示分页的小圆点点)
-     * default(默认值): false
-     */
-    showsPagination?: boolean;
+  /**
+   * Whether to display the small dots of paging
+   * (是否显示分页的小圆点点)
+   * default(默认值): false
+   */
+  showsPagination?: boolean;
 
-    /**
-     * define the dot style yourself, otherwise the default style will be centered
-     *(自己定义小圆点点的样式，否则默认样式居中)
-     */
-    paginationStyle?: React.CSSProperties;
+  /**
+   * define the dot style yourself, otherwise the default style will be centered
+   *(自己定义小圆点点的样式，否则默认样式居中)
+   */
+  paginationStyle?: Rax.CSSProperties;
 
-    /**
-     * whether it is a loop (web)
-     * (是否是循环播放)
-     * default(默认值): true
-     */
-    loop?: boolean;
+  /**
+   * whether it is a loop (web)
+   * (是否是循环播放)
+   * default(默认值): true
+   */
+  loop?: boolean;
 
-    /**
-     * specifies the default number of initializations (compatibility issues with weex Android, which need to be called asynchronously after the node is rendered, not recommended)
-     * (指定默认初始化第几个（在weex安卓下有兼容问题，需要节点渲染完成后异步调用，暂不推荐使用）)
-     * default(默认值): 0
-     */
-    index?: number;
+  /**
+   * specifies the default number of initializations (compatibility issues with weex Android, which need to be called asynchronously after the node is rendered, not recommended)
+   * (指定默认初始化第几个（在weex安卓下有兼容问题，需要节点渲染完成后异步调用，暂不推荐使用）)
+   * default(默认值): 0
+   */
+  index?: number;
 
-    /**
-     * interval for automatic play，unit: millisecond
-     * (自动播放的间隔时间，单位：毫秒)
-     * default(默认值): 3000
-     */
-    autoPlayInterval?: number;
+  /**
+   * interval for automatic play，unit: millisecond
+   * (自动播放的间隔时间，单位：毫秒)
+   * default(默认值): 3000
+   */
+  autoPlayInterval?: number;
 
-    /**
-     * change event
-     * @param {SliderChangeEvent} event
-     */
-    onChange?: (event: SliderChangeEvent) => void;
+  /**
+   * change event
+   * @param {SliderChangeEvent} event
+   */
+  onChange?: (event: SliderChangeEvent) => void;
 
 }
 
@@ -97,31 +96,31 @@ export interface SliderProps extends BaseProps {
  */
 export interface SliderChangeEvent {
 
-    /**
-     * displayed image index
-     * 展示的图片索引
-     */
-    readonly index: number;
+  /**
+   * displayed image index
+   * 展示的图片索引
+   */
+  readonly index: number;
 
-    /**
-     * other attr
-     * (其他属性)
-     */
-    readonly [key: string]: any
+  /**
+   * other attr
+   * (其他属性)
+   */
+  readonly [key: string]: any
 
 }
 
 declare class Slider extends Rax.Component<SliderProps, any> {
 
 
-    render(): JSX.Element;
+  render(): Rax.Element;
 
-    /**
-     * scroll to a page
-     * 滚动到某一页
-     * @param {number}index
-     */
-    slideTo: (index: number) => void;
+  /**
+   * scroll to a page
+   * 滚动到某一页
+   * @param {number}index
+   */
+  slideTo: (index: number) => void;
 
 }
 

@@ -46,8 +46,8 @@ class App extends Component {
     this.inputRef = createRef();
   }
 
-  onchange = (index) => {
-    console.log('change', index);
+  onchange = (e) => {
+    console.log('change', e);
   }
 
   onClick = () => {

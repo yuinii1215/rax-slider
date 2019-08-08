@@ -26,6 +26,9 @@ class Slider extends Component {
 
   onChange = (e) => {
     this.props.onChange(e);
+    this.setState({
+      index: e.index
+    });
   }
 
   handleNativeProps() {

@@ -32,7 +32,7 @@ class Slider extends Component {
     this.width = parseFloat(width) * document.documentElement.clientWidth / 750;
     this.loopIdx = 0;
     this.childStyles = [];
-    children.map((child, index) => {
+    children && children.length && children.map((child, index) => {
       let style = {
         width: this.width + 'px',
         height: this.height,

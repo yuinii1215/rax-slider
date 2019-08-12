@@ -31,15 +31,15 @@ class Slider extends Component {
     // TODO: Avoid convert unit in component
     this.width = parseFloat(width) * document.documentElement.clientWidth / 750;
     this.loopIdx = 0;
-    this.childStyles=[];
-    children.map((child,index)=>{
+    this.childStyles = [];
+    children.map((child, index) => {
       let style = {
         width: this.width + 'px',
         height: this.height,
         left: index * this.width + 'px'
       };
       this.childStyles.push(style);
-    })
+    });
   }
 
   componentDidMount() {
@@ -240,7 +240,7 @@ class Slider extends Component {
       <View ref={this.swipeView} style={{ ...styles.swipeStyle, ...style }}>
         {pages}
       </View>
-      ;
+    ;
   }
 
   render() {

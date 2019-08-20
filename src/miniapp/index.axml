@@ -3,7 +3,7 @@
   indicator-dots="{{showsPagination}}"
   current="{{index}}"
   interval="{{autoPlayInterval}}"
-  circular="{{true}}"
+  circular="{{loop}}"
   onChange="onChange">
   <block>
     <slot />

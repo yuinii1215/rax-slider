@@ -1,6 +1,6 @@
 {
   "name": "rax-slider",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Slider component for Rax.",
   "license": "BSD-3-Clause",
   "main": "lib/index.js",
@@ -65,12 +65,9 @@
   },
   "miniappConfig": {
     "main": "lib/miniapp/index",
-    "tagNameMap": "swiper",
-    "subComponents": {
-      "View": {
-        "tagNameMap": "swiper-item"
-      }
-    },
+    "tagNameMap": "rax-swiper",
+    "childWrapTag": "swiper-item",
+    "childWrapTagProps": {},
     "propsMap": {
       "onEndReachedThreshold": "endReachedThreshold"
     }

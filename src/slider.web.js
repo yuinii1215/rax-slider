@@ -24,13 +24,22 @@ class Slider extends Component {
   }
 
   componentWillMount() {
-    const {children, height, width} = this.props;
+    const { children, height, width } = this.props;
     if (children.length < 2) return;
     this.index = 0;
     this.height = height;
     // TODO: Avoid convert unit in component
     this.width = parseFloat(width) * document.documentElement.clientWidth / 750;
     this.loopIdx = 0;
+    this.childStyles = [];
+    children && children.length && children.map((child, index) => {
+      let style = {
+        width: this.width + 'px',
+        height: this.height,
+        left: index * this.width + 'px'
+      };
+      this.childStyles.push(style);
+    });
   }
 
   componentDidMount() {
@@ -73,10 +82,11 @@ class Slider extends Component {
     swipeView.style.webkitTransform = styleText;
 
     this.loopIdx = this.index < 0 && realIndex !== 0 ? this.total - realIndex : realIndex;
-    let childView = findDOMNode(this.childRefs[this.loopIdx].current);
-    childView.style.left = this.offsetX + 'px';
+    // let childView = findDOMNode(this.childRefs[this.loopIdx].current);
+    // childView.style.left = this.offsetX + 'px';
+    this.childStyles[this.loopIdx].left = this.offsetX + 'px';
 
-    this.props.onChange({index: this.loopIdx});
+    this.props.onChange({ index: this.loopIdx });
     this.setState({
       offsetX: this.offsetX
     });
@@ -90,7 +100,7 @@ class Slider extends Component {
   isLoopEnd() {
     const realIndex = this.loopedIndex();
     const num = this.total;
-    if (!this.props.loop && (realIndex === num - 1 || realIndex === 0) ) {
+    if (!this.props.loop && (realIndex === num - 1 || realIndex === 0)) {
       return true;
     }
     return false;
@@ -134,7 +144,7 @@ class Slider extends Component {
     if (this.total <= 1) return;
 
     Object.assign(styles.defaultPaginationStyle, props.paginationStyle);
-    let {itemSelectedColor, itemColor, itemSize} = styles.defaultPaginationStyle;
+    let { itemSelectedColor, itemColor, itemSize } = styles.defaultPaginationStyle;
 
     const activeStyle = {
       ...styles.activeDot,
@@ -161,8 +171,8 @@ class Slider extends Component {
 
     for (let i = 0; i < this.total; i++) {
       dots.push(i === realIndex
-        ? cloneElement(ActiveDot, {'key': i})
-        : cloneElement(NormalDot, {'key': i}));
+        ? cloneElement(ActiveDot, { 'key': i })
+        : cloneElement(NormalDot, { 'key': i }));
     }
 
     return (
@@ -180,15 +190,10 @@ class Slider extends Component {
     if (!children.length || children.length <= 1) {
       return <View style={styles.childrenStyle}>{children}</View>;
     }
-
     return children.map((child, index) => {
       let ref = createRef();
 
-      let translateStyle = {
-        width: this.width + 'px',
-        height: this.height,
-        left: index * this.width + 'px'
-      };
+      let translateStyle = this.childStyles[index];
 
       if (!(this.childRefs[index] && this.childRefs[index].current)) {
         this.childRefs.push(ref);
@@ -197,7 +202,7 @@ class Slider extends Component {
       }
       return (
         <View ref={ref} className={'childWrap' + index}
-          style={{...styles.childrenStyle, ...translateStyle}} key={index}>
+          style={{ ...styles.childrenStyle, ...translateStyle }} key={index}>
           {child}
         </View>
       );
@@ -219,7 +224,7 @@ class Slider extends Component {
     };
 
     return children.length && children.length > 1 ?
-      <SwipeEvent style={{...styles.swipeWrapper, ...style}}
+      <SwipeEvent style={{ ...styles.swipeWrapper, ...style }}
         onSwipeBegin={this.onSwipeBegin}
         onSwipeEnd={this.onSwipeEnd}
         onSwipe={this.onSwipe}
@@ -227,22 +232,22 @@ class Slider extends Component {
         verticalThreshold={verticalThreshold}
         vertical={vertical}
         horizontalThreshold={horizontalThreshold}>
-        <View ref={this.swipeView} style={{...styles.swipeStyle, ...style}}>
-          {pages}
+        <View ref={this.swipeView} style={{ ...styles.swipeStyle, ...style, ...{ transform: `translate3d(${-1 * this.offsetX}px, 0px, 0px)` }} } >
+          { pages }
         </View>
       </SwipeEvent>
       :
-      <View ref={this.swipeView} style={{...styles.swipeStyle, ...style}}>
+      <View ref={this.swipeView} style={{ ...styles.swipeStyle, ...style }}>
         {pages}
       </View>
     ;
   }
 
   render() {
-    const {style, showsPagination, children, className} = this.props;
+    const { style, showsPagination, children, className } = this.props;
     this.total = children.length;
     return (
-      <View style={{...styles.slideWrapper, ...style}} className={className || ''}>
+      <View style={{ ...styles.slideWrapper, ...style }} className={className || ''}>
         {this.renderSwipeView(this.getPages())}
         {showsPagination ? this.renderPagination() : ''}
       </View>

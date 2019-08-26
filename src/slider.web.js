@@ -53,14 +53,14 @@ class Slider extends Component {
   }
 
   autoPlay() {
-    const autoplayInterval = this.props.autoplayInterval;
+    const autoPlayInterval = this.props.autoPlayInterval;
     if (this.isSwiping) return;
     this.autoPlayTimer && clearInterval(this.autoPlayTimer);
     const interval = () => {
       if (this.isLoopEnd()) return;
       this.slideTo(this.index, SWIPE_LEFT);
     };
-    this.autoPlayTimer = setInterval(interval, parseFloat(autoplayInterval));
+    this.autoPlayTimer = setInterval(interval, parseFloat(autoPlayInterval));
   }
 
   slideTo(index, direction) {
@@ -260,7 +260,7 @@ Slider.defaultProps = {
   showsPagination: true,
   loop: true,
   autoPlay: false,
-  autoplayInterval: 3000,
+  autoPlayInterval: 3000,
   index: 0,
   paginationStyle: null,
   initialVelocityThreshold: 0.7,
